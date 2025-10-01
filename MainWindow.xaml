@@ -1,0 +1,73 @@
+﻿<Window x:Class="FormularzStudenta.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormularzStudenta"
+        mc:Ignorable="d"
+        Title="Formularz Rejestracyjny Studenta" Height="450" Width="400">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <!-- Nagłówek -->
+            <RowDefinition Height="Auto" />
+            <!-- Imie -->
+            <RowDefinition Height="Auto" />
+            <!-- Nazwisko -->
+            <RowDefinition Height="Auto" />
+            <!-- Data urodzenia -->
+            <RowDefinition Height="Auto" />
+            <!-- Kierunek -->
+            <RowDefinition Height="Auto" />
+            <!-- Zgody -->
+            <RowDefinition Height="Auto" />
+            <!-- Przerwa -->
+            <RowDefinition Height="*" />
+            <!-- Przyciski -->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <!-- Lewa strona -->
+            <ColumnDefinition Width="Auto" />
+            <!-- Prawa strona -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Etykieta tytułowa -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Rejestracja studenta" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- Imię -->
+        <Label Grid.Row="1" Grid.Column="0" Content="Imię:"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="firstNameTextbox"/>
+
+        <!-- Nazwisko -->
+        <Label Grid.Row="2" Grid.Column="0" Content="Nazwisko:"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="lastNameTextbox"/>
+
+        <!-- Data urodzenia -->
+        <Label Grid.Row="3" Grid.Column="0" Content="Data urodzenia: " />
+        <DatePicker Grid.Row="3" Grid.Column="1" Margin="5" Name="birthDatepicker"/>
+
+        <!-- Kierunek studiów -->
+        <Label Grid.Row="4" Grid.Column="0" Content="Kierunek: "/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" Name="fieldOfStudies">
+            <ComboBoxItem Content="Informatyka" />
+            <ComboBoxItem Content="Gender studies" />
+            <ComboBoxItem Content="Kognitywistyka" />
+            <ComboBoxItem Content="Fizyka i astronomia" />
+        </ComboBox>
+
+        <!-- Zgody -->
+        <Label Grid.Row="5" Grid.Column="0" Content="Zgody: "/>
+        <StackPanel Grid.Row="5" Grid.Column="1" Margin="5">
+            <CheckBox Name="EULACheckbox" Content="Akceptuję regulamin" />
+            <CheckBox Name="NewsletterCheckbox" Content="Zapisz się na newsletter" />
+        </StackPanel>
+        
+        <!-- Przyciski akcji -->
+        <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="AddBtn" Content="Dodaj" Margin="5" Padding="15,5" Background="Green" Foreground="White" Click="AddBtn_Click"/>
+            <Button Name="ClearBtn" Content="Wyczyść" Margin="5" Padding="15,5" Background="Red" Foreground="White" Click="ClearBtn_Click"/>
+            <Button Name="SaveBtn" Content="Zapisz do pliku" Margin="5" Padding="15,5" Background="DeepSkyBlue" Foreground="White" Click="SaveBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
