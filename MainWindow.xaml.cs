@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -84,6 +85,25 @@ namespace FormularzStudenta
 
             //Otwieramy okno dialogow do zpisu plików
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.FileName = "studenci.txt";
+            saveFileDialog.Title = "Zapisz listę studentów";
+
+            if(saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    //Zapisujemy całość studentData (typ StringBuilder) do pliku
+                    File.WriteAllText(saveFileDialog.FileName, studentsData.ToString());
+
+                    MessageBox.Show($"Dane zostały pomyślnie zapisane w pliku:\n{saveFileDialog.FileName}", "Plik zapisany", MessageBoxButton.OK, MessageBoxImage.Information);
+                    studentsData.Clear();
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show($"Wystąpił błąd podczas zapisu pliku: {ex.Message}", "Błąd zapisu", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }
