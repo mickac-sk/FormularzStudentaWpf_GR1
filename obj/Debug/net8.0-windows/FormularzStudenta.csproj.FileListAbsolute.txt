@@ -18,3 +18,4 @@ H:\technikum\4_PAD\Gr1\FormularzStudenta\obj\Debug\net8.0-windows\refint\Formula
 H:\technikum\4_PAD\Gr1\FormularzStudenta\obj\Debug\net8.0-windows\FormularzStudenta.pdb
 H:\technikum\4_PAD\Gr1\FormularzStudenta\obj\Debug\net8.0-windows\FormularzStudenta.genruntimeconfig.cache
 H:\technikum\4_PAD\Gr1\FormularzStudenta\obj\Debug\net8.0-windows\ref\FormularzStudenta.dll
+H:\technikum\4_PAD\Gr1\FormularzStudenta\obj\Debug\net8.0-windows\FormularzStudenta.sourcelink.json

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -34,17 +35,55 @@ namespace FormularzStudenta
                 return;
             }
             //Akceptacja EULA
+            if(EULACheckbox.IsChecked == false)
+            {
+                MessageBox.Show("Akceptacja regulaminu jest wymagana", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             //Pobieramy dane i zapisujemy do zmiennej
+
+            string firstName = firstNameTextbox.Text;
+            string lastName = lastNameTextbox.Text;
+            string birthDate = birthDatepicker.SelectedDate.Value.ToString("dd-MM-yyyy");
+            string fieldOfStudy = (fieldOfStudies.SelectedItem as ComboBoxItem).Content.ToString();
+            bool newsletter = NewsletterCheckbox.IsChecked == true;
+
+            //Tworzenie sformatowanego ciągu znaków z danymi studenta
+            string studentInfo = $"Imię: {firstName}, Nazwisko: {lastName}, Data urodzenia: {birthDate}, Kierunek: {fieldOfStudy}, Newsletter: {(newsletter ? "Tak" : "Nie")}\n";
+
+            //Dodajemy dane do zmiennej studentsData
+            studentsData.Append(studentInfo);
+            MessageBox.Show("Student został dodany do listy do zapisu", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            //Wyczyścić formularz
+            clearForm();
+        }
+
+        private void clearForm()
+        {
+            firstNameTextbox.Clear();
+            lastNameTextbox.Clear();
+            birthDatepicker.SelectedDate = null;
+            fieldOfStudies.SelectedItem = null;
+            EULACheckbox.IsChecked = false;
+            NewsletterCheckbox.IsChecked = false;
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            clearForm();
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(studentsData.Length == 0)
+            {
+                MessageBox.Show("Brak danych do zapisania", "Informacja", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            //Otwieramy okno dialogow do zpisu plików
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
         }
     }
 }
